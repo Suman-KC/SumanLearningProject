@@ -1,0 +1,69 @@
+{% include 'home/base.html'%}
+{% block content %}
+{%include 'home/navbar.html'%}
+
+
+{% comment %} p-3 mb-5 bg-white rounded  style=" display:flex; align-items:center;flex-wrap:wrap; justify-content: space-evenly;" {% endcomment %}
+<h3 class="text-center pt-4">All Courses</h3>
+<h5 class="text-center pt-1">Check out our current course offerings and stay tuned for more to come!</h5>
+{% comment %} <div class="container mt-5 pt-3"> {% endcomment %}
+    {% comment %} style="height:350px;width:415px;" {% endcomment %}
+    {% comment %} style="display:flex; align-items:center;flex-wrap:wrap; justify-content:center;" {% endcomment %}
+    {% comment %} card card-product-grid {% endcomment %}
+    {% comment %} <div class="row" >
+        {% for course in allcourses %}
+      
+        <div class="col-md-4 bg-white rounded" >
+            <a style="color:black; text-decoration:none" href="{% url 'get_course' course.slug %}" class="">
+            <figure class="card bg-white rounded"  >
+                <div class="img-wrap"> <img src="{{course.course_image.url}}" style="height:350px;width:50%; object-fit:cover" > </div>
+                <figcaption class="info-wrap border-top">
+                    
+                        <b>{{course.course_title}}</b>
+                        <div class="price mt-2"><p > <a href="#" style="color:blue; "class="p-3 icon icon-sm rounded-circle mt-4 "><i class="fa fa-user-circle fa-2x"></i></a><b>No of students Enrolled:{{course.course_enrolled}}</b> 
+                            <li style="width:80%; list-style:none; color:orange" class="stars-active"> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </p></div>
+                    <div class="price mt-2">${{course.course_price}}.00</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </a>
+        </div> <!-- col.// --> {% endcomment %}
+    
+
+        {% comment %} {% endfor %}
+      
+        
+       
+    </div>
+
+    </div> {% endcomment %}
+        <div class="container">
+            <div class="row">
+                {% for course in allcourses %}
+                <div class="col-md-4 shadow p-3 mb-5 bg-white rounded">
+                    <a style="color:black; text-decoration:none" href="{% url 'get_course' course.slug %}" class="">
+                        <figure class="card bg-white rounded"  >
+                            <div class="img-wrap"> <img src="{{course.course_image.url}}" style="height:100%;width:100%; object-fit:contain" > </div>
+                            <figcaption class="info-wrap border-top">
+                                
+                                    <b>{{course.course_title}}</b>
+                                    <div class="price mt-2"><p > <a href="#" style="color:blue; "class="p-3 icon icon-sm rounded-circle mt-4 "><i class="fa fa-user-circle fa-2x"></i></a><b>No of students Enrolled:{{course.course_enrolled}}</b> 
+                                        <li style="width:80%; list-style:none; color:orange" class="stars-active"> 
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star"></i> 
+                                        </p></div>
+                                <div class="price mt-2">${{course.course_price}}.00</div> <!-- price-wrap.// -->
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+                        {% endfor %}  
+        </div>
+    </div>
+    {%include 'home/footer.html'%}
+
+{% endblock %}

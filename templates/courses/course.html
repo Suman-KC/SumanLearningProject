@@ -1,0 +1,114 @@
+{% include 'home/base.html'%}
+{% load static%}
+{% block content %}
+{%include 'home/navbar.html'%}
+<section class="section-content pt-5 pb-5 bg">
+    <div class="container p-4">
+    
+    <!-- ============================ COMPONENT 1 ================================= -->
+ 
+        <div class="row no-gutters">
+        <div class="col-md-6 ">
+  
+   
+      <div> 
+        <img class="imagesize" style="width:100%; height:100%;object-fit:contain;" src="{{course_Description.course.course_image.url}}"></div>
+     <!-- slider-product.// -->
+
+ 
+       <button style="width:100%;"class="mt-4 p-3 btn btn-primary" href="#">Preview Course</button>
+      {% comment %} <a href="#" class="item-thumb"> <img style="height:100px; width=100px;"src="/media/{{image.image}}"></a> {% endcomment %}
+      {% comment %} <a href="#" class="item-thumb"> <img style="height:100px; width=100px;"src="{{course_Description.course.course_image.url}}"></a> {% endcomment %}
+  
+    </div> <!-- slider-nav.// -->
+ <!-- gallery-wrap .end// -->
+
+            <div class="col-md-6 ">
+                <article class="content-body">
+    
+                       <h2 class="title">{{course_Description.course.course_title}}</h2>
+    
+               <div class="rating-wrap my-3">
+                
+                       <ul class="rating-stars">
+                            <li style="width:80%;list-style:none;color:orange" class="stars-active"> 
+                                <span class="text-dark">Ratings  :</span>  
+                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                               <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </li>
+                         </ul>
+                        <small class="label-rating text-muted">132 reviews</small>
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
+                </div> <!-- rating-wrap.// -->
+    
+               <div class="mb-3"> 
+               
+               <var class="price h4"> ${{course_Description.course.course_price}}.00</var>
+               <span class="text-muted">/per course</span> 
+                </div> <!-- price-detail-wrap .// -->
+                <span class="text-danger">Offer price expiring soon.</span>
+    
+              <p>{{course_Description.product_desription}}</p>
+    
+    
+
+         <hr>
+         <!-- row.// -->
+    
+        {% comment %} <a href="#" class="btn  btn-primary"> Buy now </a> {% endcomment %}
+        {% comment %} "{% url 'add_to_cart' product.uid %}" {% endcomment %}
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'cart' %}" style="width:100%; margin-top:28px;"class=" p-3 btn btn-success"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+        {% endif %} 
+{% if request.user.is_authenticated %}
+        <a href="#" style="width:100%; margin-top:28px;"class=" p-3 btn btn-success"> <span class="text">Proceed with Payment</span> </a>
+        
+        <a href="{% url 'add_to_cart' course_Description.course.uid %}" style="width:100%; margin-top:28px;"class=" p-3 btn btn-success"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+       
+    
+       
+       {% endif %}
+       
+       {% comment %} <a href="{% url 'add_to_cart' product.id%}?size={{select_size}}" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a> {% endcomment %}
+    </article> <!-- product-info-aside .// -->
+     <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+    <!-- ============================ COMPONENTs 1 END .// ================================= -->
+</div>
+    </div>
+    </section>
+
+  <div class="container border "> 
+    <section class="course_detail  pb-5">
+      <h2 class="text-dark p-3">Course:-Details</h2>
+      <p class="p-3">{{course_Description.product_desription}}</p>
+      <h2 class="text-dark p-3">About Course:</h2>
+      <p class="p-3">{{course_Description.about_course}}</p>
+      <h2 class="text-dark mr-3 mt-3 p-3">What you'll learn</h2>
+      <p class="p-3">{{course_Description.what_will_learn}}</p>
+      <h2 class="text-dark p-3">Requirements?</h2>
+      <p class="p-3"> {{course_Description.requirements}}</p>
+      <h2 class="text-dark p-3">Note from Instructor:</h2>
+      <p class="p-3">{{course_Description.note_from_instructor}}</p3>
+  
+  
+    </section>
+  </div>
+    
+
+
+
+
+{% comment %} 
+    <script>
+      window.location.href=window.location.pathname+`?size=${size}`;
+      function get_correct_price(size){
+        console.log(size);
+        window.location.href=window.location.pathname+`?size=${size}`;
+        
+             }
+    </script> {% endcomment %}
+    {%include 'home/footer.html'%}
+{% endblock %}

@@ -1,0 +1,140 @@
+{% comment %} {% load static%}
+{%include 'base.html'%} {% endcomment %}
+<style>
+    .makeme a{
+        text-decoration:none;
+        color:white;
+    }
+    .makeme{
+        font: solid 2px sans-serif;
+    }
+    .grow{
+        width:30%;
+    }
+    .navbar{
+      position:sticky;
+    }
+
+
+    @media screen and (max-width: 600px) {
+      .responsive {
+        position: relative;
+      }
+      {% comment %} .makeme {
+        position: absolute;
+        right: 0;
+        top: 0;
+      } {% endcomment %}
+      .responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+    }
+
+</style>
+<nav class="navbar navbar-expand-lg fixed-top "style="background-color:#073763 ">
+    <div class="container-fluid p-2" style=" display:flex; flex-direction:row; justify-content:space-between;">
+        <div>
+      <a style="color:white"class="navbar-brand" href="#"><span style="color:red;,width:5px;">Suman</span> Learning Academy</a>
+        </div>
+        <div class="responsive" id="responsive">
+        <ul class="navbar-nav ps-20 p-2">
+          {% comment %} aria-current="page" {% endcomment %}
+          <li class="nav-item">
+            <a style="color:white" class="nav-link active"  href="{% url 'home'%}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a style="color:white" class="nav-link" href="{% url 'about'%}">About</a>
+        </li>
+         <li class="nav-item">
+          <a  style="color:white"class="nav-link" href="{% url 'contact'%}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a style="color:white" class="nav-link" href="{%url 'all_courses'%}">All Courses</a>
+        </li>
+        <li class="nav-item">
+          <a style="color:white" class="nav-link" href="{%url 'blog'%}">Blogs</a>
+        </li>
+      </ul>
+     </div>
+    
+        <div  style="display:flex; justify-content:space-between;">
+           <div class="makeme" > 
+          {% if not request.user.profile%}
+          <a href="{% url 'cart' %}" style="background-color:#073763 " class="btn btn-dark mx-3"><i style="color:white;" class="fa-solid fa-cart-shopping fa-2x"></i></a>
+            
+          <a style="border:2px solid ; border-radius:4px; padding:10px" href="{% url 'login' %}"> Login</a>
+
+          {% else %}
+         
+          <a href="{% url 'cart' %}" class="icon icon-sm rounded-circle "><i style="color:white;" class="fa-solid fa-cart-shopping fa-2x"></i>
+            <span class="badge badge-pill badge-success notify" style="color:red; margin-right:10px">{{request.user.profile.get_cart_count}}</span>
+           
+            <a href="{% url 'profile' %}" style="color:white; "class="p-3 icon icon-sm rounded-circle mt-4 "><i class="fa fa-user-circle fa-2x"></i></a>
+            {% endif %}
+
+     
+          
+          
+           
+        {% comment %} <a href="#" class="icon icon-sm rounded-circle mt-4 "><i class="fa fa-user"></i></a> {% endcomment %}
+       
+
+        {% if not request.user.profile%}
+        <a class="bg-success" style="border:2px solid ; border-radius:4px; padding:10px" href="{% url 'register' %}">Sign UP</a> 
+        
+        {% else %}
+        <a class="bg-success" style="border:2px solid ; border-radius:4px; padding:10px" href="{% url 'logout_user' %}">Logout</a> 
+        
+        {% endif %}
+
+                
+            </div>         
+        </div> 
+        
+  </div>
+</nav>
+<script>
+  click(){
+  
+  }
+</script>
+
+            {% comment %} <a class="nav-link active"  href="{%url 'home'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'about'%}">About</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="{%url 'contact'%}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'courses'%}">All Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'blogs'%}">Blogs</a>
+          </li>
+        </ul>
+    </div>
+      
+          <div>
+            <a href="{% url 'cart' %}" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+						<span class="badge badge-pill badge-danger notify">{{request.user.profile.get_cart_count}}</span>
+           
+
+                        <div class="col-4 widget-header icontext float-right "  style="display:flex; flex-direction:row; padding-left:100px; justify-content:center;">
+                            <a href="#" class="icon icon-sm rounded-circle mt-4 "><i class="fa fa-user"></i></a>
+                            <div class="text" style="padding-left:20px; padding-top:5px">
+                                <span class="text-muted">Welcome!</span>
+                                <div>
+                                    <a href="{% url 'register' %}"> Register</a>
+                                    <a href="{% url 'login' %}">Sign in</a> 
+                                    
+                                </div>
+                            </div>
+                        </div>              
+          
+    </div>
+  </nav> {% endcomment %}
+

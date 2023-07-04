@@ -1,0 +1,89 @@
+{% include 'home/base.html'%}
+{% block content %}
+{%include 'home/navbar.html'%}
+{% load static%}
+<style>
+.floating{
+  
+    position: relative;
+    -webkit-animation: movingImage 2s linear infinite;
+    animation: movingImage 2s linear infinite;
+  
+  
+  }
+  @-webkit-keyframes movingImage {
+  0%  {left: 0px; top: 0px;}
+  25% {left: 35px; top: 0px;}
+  50% {left: 35px; top: 35px;}
+  75% {left: 0px; top: 35px;}
+  100% {left: 0px; top: 0px;}
+  }
+  @keyframes movingImage {
+  0%  {left: 0px; top: 0px;}
+  25% {left: 35px; top: 0px;}
+  50% {left: 35px; top: 35px;}
+  75% {left: 0px; top: 35px;}
+  100% {left: 0px; top: 0px;}
+  }
+</style>
+<div class="container-fluid" style="background-color:#073763 ">
+    <div class="container">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="text">
+		<h1 class="text-light mt-4 pt-4">Nepali tech courses with expert instruction.</h1>
+		<h4 class="text-light mt-5">Improve your skills and knowledge by setting aside a few minutes each <br>
+			day to take advantage of the comprehensive and convenient on-demand <br>
+			video course platform.</h4>
+
+	            <button  class="btn btn-light bg-success mb-5 mt-5 p-4" style=" color:white;width:200px;border:2px solid ; border-radius:4px;"> <a style="color:white" class="nav-link" href="{% url 'all_courses'%}">Browse Courses<i class="fa-solid fa-arrow-right"></i></a></button> 			
+	</div> 
+</div>
+	<div class="col-md-6">
+		<div class="brand-wrap"style="justify-content:center;">
+			<img class="floating p-5 m-4" style="height:400px; width:400px;" src="{%static 'image/kti.webp' %}">
+			
+		</div>
+	</div> 
+</div>
+</div>
+</div>
+{% comment %} <h3 class="text-center pt-4">All Courses</h3>
+<h5 class="text-center pt-1">Check out our current course offerings and stay tuned for more to come!</h5> {% endcomment %}
+    {% comment %} <div class="row" style="display: flex; align-items:center;flex-wrap:wrap; justify-content: space-evenly;">
+
+<div class="container mt-5 pt-3">
+        {% for course in allcourses %}
+      
+        <div class="col-md-4 " >
+            <a style="color:black; text-decoration:none" href="{% url 'get_course' course.slug %}" class="">
+            <figure class="card card-product-grid" >
+                <div class="img-wrap"> <img src="{{course.course_image.url}}"style="height:350px;width:415px;"> </div>
+                <figcaption class="info-wrap border-top">
+                    
+                        <b>{{course.course_title}}</b>
+                        <div class="price mt-2"><p > <a href="#" style="color:blue; "class="p-3 icon icon-sm rounded-circle mt-4 "><i class="fa fa-user-circle fa-2x"></i></a><b>No of students Enrolled:{{course.course_enrolled}}</b> 
+                            <li style="width:80%; list-style:none; color:orange" class="stars-active"> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </p></div>
+                    <div class="price mt-2">${{course.course_price}}.00</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </a>
+        </div> <!-- col.// -->
+    
+
+        {% endfor %} 
+      
+        
+       
+    </div>
+
+    </div>
+    {% endcomment %}
+    {% include 'courses/modelcourse.html' %}
+    {%include 'home/footer.html'%}
+
+{% endblock %}

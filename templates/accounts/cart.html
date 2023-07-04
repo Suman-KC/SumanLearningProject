@@ -1,0 +1,71 @@
+{% include 'home/base.html'%}
+{% load static%}
+{% block content %}
+{%include 'home/navbar.html'%}
+<div class="container my-5">
+  <div class="row">
+    <h1 class="text-center mb-5">My Cart</h1>
+    <div class="col-lg-8">
+      {% for cart in cart %}
+          <div class="row">
+            
+            <div class="col-sm-6 text-center align-self-center"><img src="{{cart.course.course_image.url}}" class="img-fluid img-thumbnail shadow-sm" height="300" width="350"> </div>
+                 <div class="col-sm-6">
+                  <h5 class="mt-5">{{cart.course.course_name}}</h5>
+                  <p class="mb-2 text-dark">{{cart.course.course_title}} </p>
+                  {% comment %} <div class="my-3"> {% endcomment %}
+                    {% comment %} <label for="quantity">Quantity:</label>
+                    <a class="minus-cart btn"><i class="fas fa-minus-square fa-lg"></i></a>
+                    <span id="quantity">1</span>
+                    <a class="plus-cart btn"><i class="fas fa-plus-square fa-lg"></i></a> {% endcomment %}
+                  {% comment %} </div>  {% endcomment %}
+                  <div class="d-flex justify-content-between mb-5">
+                    <a href="{% url 'remove_Cart' cart.uid %}" class="btn btn-sm btn-secondary mr-3">Remove item </a>
+                    <a href="{% url 'get_course' cart.course.slug %}" class="btn btn-sm btn-success mr-3">Checkout </a>
+                    <p class="mb-0"><span><strong>{{cart.course.course_price}}</strong></span></p>
+                  </div>
+                
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+       
+    
+         
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                 <h3>The Total Amount of</h3>
+                 <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount<span>{{before_discount}}</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center px-0">Discount<span>{{discount_price}}</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                    <div>
+                      <strong>Total</strong> <small>(including VAT)</small>
+                    </div>
+                    <span><strong>{{total_price}}</strong></span>
+                  </li>
+                </ul>
+                <div class="d-grid"><a href="" class="btn btn-primary">Place Order</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="mb-4">We accept</h5>
+            <img src="{% static 'image/khaltis.png' %}" alt="" class="img-fluid">
+            <img src="{% static 'image/esewa_og.webp' %}" style="height:50px; width:50px;"alt="" class="img-fluid">
+            <img src="{% static 'image/ips.png' %}" alt="" class="img-fluid">
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+    {% endblock  %}      

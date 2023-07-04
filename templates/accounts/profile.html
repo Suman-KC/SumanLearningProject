@@ -1,0 +1,20 @@
+{% include 'home/base.html'%}
+{% block content %}
+{%include 'home/navbar.html'%}
+{% load static%}
+<div class="container mb-5">
+<h3 class="text-center text-primary mt-5">My Information</h3>
+<div class="d-flex justify-content-center align-items-center">
+    <div>
+      {% if profile.profile_image%}
+     <img src="{{profile.profile_image.url}}" alt="No image" style="height:350px;width:415px;"> 
+    {% endif %}
+    </div>
+  <div> 
+    <h5 class="text-dark">Name:-{{profile.user.username}}</h5>
+    </div>
+
+</div>
+</div>
+{%include 'home/footer.html'%}
+{% endblock %}

@@ -1,0 +1,26 @@
+.mydivstyle:hover{
+    box-shadow:0 0 20px 0 rgba(0,0,0,3);
+    transform:translateY(-10px);
+
+}
+.floating{
+     position: relative;
+    -webkit-animation: movingImage 2s linear infinite;
+    animation: movingImage 2s linear infinite;
+  
+  
+  }
+  @-webkit-keyframes movingImage {
+  0%  {left: 0px; top: 0px;}
+  25% {left: 35px; top: 0px;}
+  50% {left: 35px; top: 35px;}
+  75% {left: 0px; top: 35px;}
+  100% {left: 0px; top: 0px;}
+  }
+  @keyframes movingImage {
+  0%  {left: 0px; top: 0px;}
+  25% {left: 35px; top: 0px;}
+  50% {left: 35px; top: 35px;}
+  75% {left: 0px; top: 35px;}
+  100% {left: 0px; top: 0px;}
+  }

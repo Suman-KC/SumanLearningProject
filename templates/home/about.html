@@ -1,0 +1,25 @@
+{%include 'home/base.html'%}
+
+{%include 'home/navbar.html'%}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-6 mt-5">
+           <h3 class="text-dark"> SUman Learning Academy – The Online Learning Platform for Advancing Your Knowledge and Skills</h3>
+
+           <p> At dynoAcademy, we offer flexible self-paced courses taught by qualified instructors.<br>
+            Our expertly curated courses are designed to help you advance <br>
+            your knowledge and skills in your chosen field.
+        </div>
+        <div class="col-md-6 mt-5">
+            <div class=" pl-5">
+                <img class="pl-5 border rounded-circle" style="height:300px; width:300px; margin-left:200px;" src="{% static 'image/girl_with_laptop.png' %}">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'home/footer.html'%}
+{% endblock content%}

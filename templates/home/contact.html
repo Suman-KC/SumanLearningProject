@@ -1,0 +1,80 @@
+{%include 'home/base.html'%}
+{%include 'home/navbar.html'%}
+{% block content %}
+{% load static %}
+<style>
+  .mydivstyle:hover{
+    box-shadow:0 0 20px 0 rgba(0,0,0,3);
+    transform:translateY(-10px);
+
+}
+
+
+
+</style>
+{% comment %} <div class="brand-wrap">
+  <img class="floating" style="height:624px; width:624px;" src="{%static 'image/kti.webp' %}">
+  
+</div> {% endcomment %}
+<div class="container">
+    <div class="row mt-5 text-center "><h1 class="text-center">Contact Us</h1>
+        <div class="col-lg-4 mydivstyle">
+            <h2 class="mt-5"><i class="bi bi-phone"></i>Contact</h4>
+            <p class="text-danger font-weight-bold mt-3"><a href="tel: +958394893">+949848493</a></p>
+        </div>    
+        <div class="col-lg-4 mydivstyle">
+            <h2 class="mt-5"><i class="bi bi-chat-right-text"></i>Send-Email</h4>
+            <p class="font-weight-bold mt-3"><a href="mailto: kcsuman2058@gmail.com">kcsuman2058@gmail.com</a></p>
+        </div> 
+        <div class="col-lg-4 mydivstyle">
+            <h2 class="mt-5"><i class="bi bi-person-vcard"></i>Office Address</h4>
+            <p class="font-weight-bold mt-3"><a href="https:/">Ghorahi,Dang</a></p>
+        </div> 
+    </div>
+</div>
+{% if not request.user%}
+<div class="box">
+<div class="container mt-5 mb-5" >
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 bg-secondary rounded">
+    <form class="" method="POST">
+    <h2 class="text-center" >Contact Form</h2>
+    {% csrf_token %}
+       <div class="form-group ">
+        <label for="name">Name</label>
+        <input type='text' class="form-control" placeholder="enter your name" name="name">
+      </div>
+      <div class="form-group ">
+        <label for="email">Email</label>
+        <input type='email' class="form-control" placeholder="enter your email" name="email">
+      </div>
+     
+    <div class="form-group ">
+        <label for="mobier">mobile</label>
+        <input type='number' class="form-control" placeholder="enter your mobile no" name="mobile">
+      </div>
+      <div class="form-group ">
+        <label for="message">Any queries</label>
+        <input type="text-area" class="form-control"placeholder="enter any queries" name="message">
+      </div>
+     
+     <div class="form-check">
+       <input type="checkbox" class="form-check-input" id="exampleCheck1">
+       <label class="form-check-label" for="exampleCheck1">Check me out</label>
+     </div>
+     <div class="form-group">
+     <button type="submit" class="btn btn-success center mt-2 p-3 rounded">Submit</button>
+    </div>
+   </form>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+</div>
+</div>
+{% endif %}
+
+{% include 'home/footer.html'%}
+{% endblock content%}
